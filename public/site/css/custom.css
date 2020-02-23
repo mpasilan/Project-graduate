@@ -1,0 +1,17 @@
+input {
+  height: 42px;
+  padding: 0;
+  background: transparent;
+  width: 100%;
+  border-width: 0 0 2px 0;
+  color: #black;
+  margin-bottom: 1rem;
+  border-color: #dedede;
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out; }
+  input:focus {
+    border-color: #AE9548; }
+  input::placeholder {
+    color: #b2b1b1; }

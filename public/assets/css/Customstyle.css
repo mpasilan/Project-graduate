@@ -1,0 +1,15 @@
+#hideColumn {
+	display: none;
+}
+#u_name {
+	background: transparent;
+	text-decoration: underline;
+	border: none;
+	font-style: italic;
+	font-size: 20px;
+
+}
+#modal-title {
+	font-weight: bolder;
+	font-style: italic;
+}
