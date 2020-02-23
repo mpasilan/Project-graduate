@@ -15,12 +15,12 @@
                                 <div class="datepicker">
                                     <div class="date-select">
                                         <p>From</p>
-                                        <input type="text" class="datepicker-1" name="in" id="in" value="yyyy / mm / dd">
+                                        <input type="text" class="datepicker-1" name="in" id="in" value="yyyy-mm-dd">
                                         <img src="img/calendar.png" alt="">
                                      </div>
                                     <div class="date-select to">
                                         <p>To</p>
-                                        <input type="text" class="datepicker-2" name="out" id="out" value="yyyy / mm / dd">
+                                        <input type="text" class="datepicker-2" name="out" id="out" value="yyyy-mm-dd">
                                         <img src="img/calendar.png" alt="">
                                     </div>
                                 </div>

@@ -17,7 +17,8 @@ Route::get('/', function () {
 	Route::resource('hotel', 'HotelController');
 	Route::resource('contact', 'ContactController');
 	Route::post('hotel','HotelController@getdates')->name('hotel.get');
-	Route::post('hotel/request','HotelController@booking')->name('hotel.book');
+	Route::post('hotel/request','CustomAuthController@guestRegistrationFrom')->name('hotel.book');
+	Route::post('hotel/guest','CustomAuthController@register')->name('new.guest');
 
 Auth::routes();
 Route::group(['prefix' => 'admin','middleware' => ['adminrole']], function(){
