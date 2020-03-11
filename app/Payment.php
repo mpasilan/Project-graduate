@@ -8,8 +8,11 @@ class Payment extends Model
 {
 
 	protected $table = 'payment';
+
     
     protected $guarded = [];
+
+    public $timestamps = false;
 
         public function payment_status()
     {
@@ -19,5 +22,10 @@ class Payment extends Model
         public function type_of_payment()
     {
         return $this->belongsTo(Type_of_payment::class,'TypeOfPayment_id','id');
+    }
+
+         public function booking()
+    {
+        return $this->hasMany(Bookings::class);
     }
 }

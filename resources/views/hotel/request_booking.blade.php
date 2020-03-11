@@ -15,6 +15,7 @@
                         
                         <tr>
                             @foreach($room_category as $category)
+
                             <td>
                         
                     <div class="col-13">
@@ -22,22 +23,35 @@
                         <h2>{{ $category->category }} rooms</h2>
                         <h4>₱{{ $category->price }}</h4>
 
-                        <form action="{{ route('hotel.book') }}" method="post">
+                        <form action="{{ route('hotel.create') }}" method="GET">
                                 @csrf
-                            <input type="hidden" name="from" value="{{ $in }}">
-                            <input type="hidden" name="to" value="{{ $out }}">
-                            <input type="hidden" name="category_id" id="start" class="start" value="{{ $category->id }}">
-                            @if($category->id == 1)
-                                <label>( {{ $juniorroomcount }} room/s available )</label><br>
-                                    @elseif($category->id == 2)
-                                         <label>( {{ $standardroomcount }} room/s available )</label><br>
-                                    @elseif($category->id == 3)
-                                         <label>( {{ $superiorroomcount }} room/s available )</label><br>
-                                    @elseif($category->id == 4)
-                                         <label>( {{ $familyroomcount }} room/s available )</label><br>
+                            <input type="hidden" name="category_id" value="{{ $category->id }}">
+                            @if($category->id == 1 && $juniorroomcount > 0 )
+                                <label style="color:green; font-weight:bold;">( {{ $juniorroomcount }} @if($juniorroomcount>1)
+                                                                                                            rooms available )
+                                                                                                        @else
+                                                                                                            room left!)
+                                                                                                        @endif</label><br>
+                                    <button type="submit">Book Now! <i class="lnr lnr-arrow-right"></i></button>
+                                    @elseif($category->id == 2 && $standardroomcount > 0)
+                                         <label style="color:green; font-weight:bold;">( {{ $standardroomcount }} room/s available )</label><br>
+                                         <button type="submit">Book Now! <i class="lnr lnr-arrow-right"></i></button>
+                                    @elseif($category->id == 3 && $superiorroomcount > 0)
+                                         <label style="color:green; font-weight:bold;">( {{ $superiorroomcount }} room/s available )</label><br>
+                                         <button type="submit">Book Now! <i class="lnr lnr-arrow-right"></i></button>
+                                    @elseif($category->id == 4 && $familyroomcount > 0)
+                                         <label style="color:green; font-weight:bold;">( {{ $familyroomcount }} @if($familyroomcount>1)
+                                                                                                                    rooms available )
+                                                                                                                @else
+                                                                                                                    room left, Hurry! )
+                                                                                                                @endif</label><br>
+                                         <button type="submit">Book Now! <i class="lnr lnr-arrow-right"></i></button>
+                                         @else
+                                            <label style="color: firebrick; font-weight: bold;"> (  No room/s available! )</label><br>
+                                         <button type="button"><a href="{{ route('hotel.index') }}" style="color:inherit;">back<i class="lnr lnr-arrow-left"></i></a></button>
 
                             @endif
-                            <button type="submit">Book Now! <i class="lnr lnr-arrow-right"></i></button>
+                            
                        </form>
                         </div>
                     </div>

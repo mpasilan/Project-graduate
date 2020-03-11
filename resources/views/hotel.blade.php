@@ -10,18 +10,20 @@
                          <div class="col-lg-6">
                         <div class="check-form" style="background: white;">
                             <h2>Check Availability</h2>
-                            <form method="post" action="{{ route('hotel.get') }}">
+                            <form method="post" action="{{ route('hotel.get') }}" autocomplete="off">
                                 @csrf
                                 <div class="datepicker">
                                     <div class="date-select">
-                                        <p>From</p>
-                                        <input type="text" class="datepicker-1" name="in" id="in" value="yyyy-mm-dd">
-                                        <img src="img/calendar.png" alt="">
+                                        <p><img src="{{asset('site/img/calendar.png')}}" alt=""> From</p>
+                                        <input type="text" name="from" id="from" placeholder="yyyy-mm-dd" value="{{ old('in') }}" required >
+                                        <input type="hidden" id="f" name="in">
+                                        
                                      </div>
                                     <div class="date-select to">
-                                        <p>To</p>
-                                        <input type="text" class="datepicker-2" name="out" id="out" value="yyyy-mm-dd">
-                                        <img src="img/calendar.png" alt="">
+                                        <p><img src="{{asset('site/img/calendar.png')}}" alt=""> To</p>
+                                        <input type="text"  name="to" id="to" placeholder="yyyy-mm-dd" value="{{ old('out') }}" required >
+                                        <input type="hidden" id="t" name="out">
+                                        
                                     </div>
                                 </div>
                                 
