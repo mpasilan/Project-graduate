@@ -167,6 +167,21 @@ class HotelController extends Controller
                         foreach ($room as $r) {
                             $room_id = $r->id;
                         }
+
+                    $date1 = new DateTime($in);
+                    $date2 = new DateTime($out);
+                    $interval = $date1->diff($date2);
+                    $nights = $interval->format('%a'); 
+                    $date = date('Ymd');
+                    $time = date('His');
+                    $roomcategories = Room_category::Where('id', '=', $c_id)->first();
+                    $category = $roomcategories['category'];
+                    $rprice = $roomcategories['price'];
+                    $total = $rprice*$nights;
+                    $b_Fee = ($total/100)*20;
+                    $remaining = $total - $b_Fee;
+
+
                 //add booking
                 $booking = Bookings::where('guest_id', '=', $g_id )->where('check_in_date', '=', $in)->count();
                 
@@ -179,6 +194,7 @@ class HotelController extends Controller
                     'check_out_date' => $out,
                     'payment_id' => $payment_id,
                     'rooms_id' => $room_id,
+                    'Total' => $total,
                 ]);
                     $bookings = Bookings::where('guest_id', '=', $g_id )->where('check_in_date', '=', $in)->take(1)->get();
                         foreach ($bookings as $b) {
@@ -192,18 +208,8 @@ class HotelController extends Controller
                          } 
                         
                     }
-            $date1 = new DateTime($in);
-            $date2 = new DateTime($out);
-            $interval = $date1->diff($date2);
-            $nights = $interval->format('%a'); 
-            $date = date('Ymd');
-            $time = date('His');
-            $roomcategories = Room_category::Where('id', '=', $c_id)->first();
-            $category = $roomcategories['category'];
-            $rprice = $roomcategories['price'];
-            $total = $rprice*$nights;
-            $b_Fee = ($total/100)*20;
-            $remaining = $total - $b_Fee;
+            
+            
             dd($in,$out,$rprice,$nights,$total,$b_Fee,$remaining,$category,$from,$to);
             $request->session()->put('guest',$g_id);
             $g = $request->session()->get('guest');

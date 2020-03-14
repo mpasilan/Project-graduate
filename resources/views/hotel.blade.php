@@ -15,14 +15,14 @@
                                 <div class="datepicker">
                                     <div class="date-select">
                                         <p><img src="{{asset('site/img/calendar.png')}}" alt=""> From</p>
-                                        <input type="text" name="from" id="from" placeholder="yyyy-mm-dd" value="{{ old('in') }}" required >
-                                        <input type="hidden" id="f" name="in">
+                                        <input type="text" name="from" id="from" placeholder="yyyy-mm-dd" value="{{ old('from') }}" required >
+                                        <input type="hidden" id="f" name="in" value="{{ old('in') }}" >
                                         
                                      </div>
                                     <div class="date-select to">
                                         <p><img src="{{asset('site/img/calendar.png')}}" alt=""> To</p>
-                                        <input type="text"  name="to" id="to" placeholder="yyyy-mm-dd" value="{{ old('out') }}" required >
-                                        <input type="hidden" id="t" name="out">
+                                        <input type="text"  name="to" id="to" placeholder="yyyy-mm-dd" value="{{ old('to') }}" required >
+                                        <input type="hidden" id="t" name="out" value="{{ old('out') }}">
                                         
                                     </div>
                                 </div>

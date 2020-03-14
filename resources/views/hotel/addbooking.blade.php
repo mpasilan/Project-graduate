@@ -59,14 +59,14 @@
                                                     <div class="col-md-12 ">
                                                         <div class="date-select">
                                                             <p><img src="{{ asset('site/img/calendar.png') }}" alt=""> Date of Birth</p>
-                                                            <input type="text" class="form-control @error('birthdate') is-invalid @enderror" name="birthdate1" id="date" value="{{ old('birthdate') }}" required  autocomplete="off">
+                                                            <input type="text" class="form-control @error('birthdate') is-invalid @enderror" name="birthdate1" id="date" value="{{ old('birthdate1') }}" required  autocomplete="off">
                                                         
                                                             @error('birthdate')
                                                             <span class="invalid-feedback" role="alert">
                                                                 <strong>{{ $message }}</strong>
                                                             </span>
                                                             @enderror
-                                                            <input type="hidden" id="alternate" name="birthdate">
+                                                            <input type="text" id="alternate" name="birthdate" value="{{ old('birthdate') }}">
                                                          </div>
                                                      </div>
 

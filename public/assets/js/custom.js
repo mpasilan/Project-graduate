@@ -84,3 +84,12 @@ $('#EditModal').on('show.bs.modal',function(event){
       modal.find('.modal-body #user_role').val(u_role);
 
     });
+
+$('#DeleteBooking').on('show.bs.modal',function(event){
+      var button = $(event.relatedTarget)
+      var booking = button.data('booking')
+      var booking_id = button.data('bid')
+      var modal = $(this)
+      modal.find('.modal-body #booking').val(booking);
+      modal.find('.modal-body #booking_id').val(booking_id);
+    });
