@@ -66,7 +66,7 @@
                                                                 <strong>{{ $message }}</strong>
                                                             </span>
                                                             @enderror
-                                                            <input type="text" id="alternate" name="birthdate" value="{{ old('birthdate') }}">
+                                                            <input type="hidden" id="alternate" name="birthdate" value="{{ old('birthdate') }}">
                                                          </div>
                                                      </div>
 

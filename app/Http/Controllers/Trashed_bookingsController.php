@@ -30,7 +30,7 @@ class Trashed_bookingsController extends Controller
      */
     public function index()
     {	
-        $book['bookings'] = Bookings::onlyTrashed()->paginate(10);
+        $book['bookings'] = Bookings::onlyTrashed()->orderBy('deleted_at','desc')->paginate(10);
 
           
             

@@ -11,6 +11,7 @@ use App\Guest;
 use App\Payment;
 use DB;
 use DateTime;
+use PDF;
 
 class HotelController extends Controller
 {
@@ -37,7 +38,7 @@ class HotelController extends Controller
         $in = $date['in'];
         $out = $date['out'];
         $from = $date['from'];
-        $to = $date['to'];
+            $to = $date['to'];
         $junior = 1;
         $standard = 2;
         $superior = 3;
@@ -121,13 +122,15 @@ class HotelController extends Controller
 
          $request->session()->put('guest',$request->input());
          $guest = $request->session()->get('guest');
+         $fname['fname'] = $guest['fname'];
+         $lname['lname'] = $guest['lname'];
          $category_id = $request->session()->get('category_id');
          $c_id = $category_id['category_id'];
          $date = $request->session()->get('dates');
             $in = $date['in'];
             $out = $date['out'];
-            $from = $date['from'];
-            $to = $date['to'];
+            $from['from'] = $date['from'];
+            $to['to'] = $date['to'];
 
          $email = $request['email'];  
          //get guest ID  
@@ -172,8 +175,6 @@ class HotelController extends Controller
                     $date2 = new DateTime($out);
                     $interval = $date1->diff($date2);
                     $nights = $interval->format('%a'); 
-                    $date = date('Ymd');
-                    $time = date('His');
                     $roomcategories = Room_category::Where('id', '=', $c_id)->first();
                     $category = $roomcategories['category'];
                     $rprice = $roomcategories['price'];
@@ -199,48 +200,59 @@ class HotelController extends Controller
                     $bookings = Bookings::where('guest_id', '=', $g_id )->where('check_in_date', '=', $in)->take(1)->get();
                         foreach ($bookings as $b) {
                             $booking_id = $b->id;
+                            $created = $b->created_at->format('YmdHs');
                          }
                     }
                     else{
                     $bookings = Bookings::where('guest_id', '=', $g_id )->where('check_in_date', '=', $in)->take(1)->get();
                        foreach ($bookings as $b) {
                             $booking_id = $b->id;
+                            $created = $b->created_at->format('YmdHs');
                          } 
                         
                     }
             
             
-            dd($in,$out,$rprice,$nights,$total,$b_Fee,$remaining,$category,$from,$to);
+            // dd($in,$out,$rprice,$nights,$total,$b_Fee,$remaining,$category,$from,$to);
             $request->session()->put('guest',$g_id);
             $g = $request->session()->get('guest');
 
 
-            return view('hotel/payment')->with('guest_id',$g_id)->with('price', $rprice)->with('bookingFee', $b_Fee)->with('balance',$remaining)->with('first', $date)->with('second', $time)->with('third',$booking_id)->with('nights',$nights)->with('category',$category);
+            return view('hotel/payment')->with('guest_id',$g_id)->with('price', $rprice)->with('bookingFee', $b_Fee)->with('balance',$remaining)->with('created', $created )->with('id',$booking_id)->with('nights',$nights)->with('category',$category)->with($fname)->with($lname)->with($from)->with($to)->with('total',$total);
           
              }
 
 
 
         public function paymentdetails(Request $request)
-        { 
+        {  
 
-        $payments = Payment::doesntHave('booking')->count();
-           if ($payments == 0) {
-               Payment::create();
-               $payment = Payment::doesntHave('booking')->take(1)->get();
-                foreach ($payment as $p) {
-                    $payment_id = $p->id;
-                }
-           }else{
-                $payment = Payment::doesntHave('booking')->take(1)->get();
-                foreach ($payment as $p) {
-                    $payment_id = $p->id;
-                }
-           } 
-                dd($payment_id,$in,$out);
-                // Bookings::create([
-                //     'time_from' => 
-                // ]);
+           session()->flush();
+            $id = $request['booking'];
+        $show = Bookings::where('id', '=', $id)->with('guest')->with('rooms')->get();
+        foreach ($show as $s) {
+            $j=$s->rooms->category_id;
+            $a =$s->guest->firstname;
+            $in = $s->check_in_date;
+            $out = $s->check_out_date;
+        }
+        //dd($a);
+        $category = Room_category::where('id', '=', $j)->first();
+
+                    $date1 = new DateTime($in);
+                    $date2 = new DateTime($out);
+                    $interval = $date1->diff($date2);
+                    $nights = $interval->format('%a');                    
+                    $c = $category['category'];
+                    $rprice = $category['price'];
+                    $total = $rprice*$nights;
+                    $b_Fee = ($total/100)*20;
+                    $remaining = $total - $b_Fee;
+        
+        $pdf = PDF::loadView('guest_pdf', compact('show','nights','c','rprice','total','b_Fee','remaining','in','out'));
+        
+        return $pdf->stream('GamorotCottages.pdf');
+
 
         }
 

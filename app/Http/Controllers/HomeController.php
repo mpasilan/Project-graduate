@@ -73,6 +73,8 @@ class HomeController extends Controller
         $id = $request['booking_id'];
         $booking = Bookings::findOrFail($id);
         $booking->delete();
+
+        return redirect()->action('HomeController@index');
     }
 
     public function store()

@@ -29,7 +29,7 @@
                     </span>
                 </form>
               </div>
-              <div class="col-md-4">
+              <div class="col-md-3">
                 <form action="{{ route('search') }}" method="get" autocomplete="off">
                   <div class="input-group">
                     <input type="text" name="search" class="form-control">
@@ -43,6 +43,7 @@
             <br>
             <div class="container-fluid">
             <table class="table table-striped">
+              <thead class="thead-dark">
               <tr>
                 <th>ID</th>
                 <th>Booking ID</th>
@@ -54,6 +55,7 @@
                 <th>Payment status</th>
                 <th>Actions</th>
               </tr>
+            </thead>
                     <?php $count = 1; ?>
                     @foreach ($bookings as $booking)
                 <tr>
@@ -102,14 +104,15 @@
             <span aria-hidden="true">×</span>
           </button>
         </div>
-           <form method="POST" action="{{ route('soft.destroy') }}">
+           <form method="post" action="{{ route('soft.destroy') }}">
+            @method('POST')
             @csrf
             
         <div class="modal-body ">
           <p class="text-center">Are you sure you want to "remove" booking</p>
           <input class=" col-md-12 text-center" type="text" id="booking" value="" name="user_name" disabled>
           
-          <input type="hidden" name="booking_id" id="booking_id" value="">
+          <input type="text" name="booking_id" id="booking_id" value="">
         </div>
         <div class="modal-footer">
                       

@@ -26,7 +26,7 @@ Route::group(['prefix' => 'admin','middleware' => ['adminrole']], function(){
 			Route::get('/', 'HomeController@index')->name('dashboard');
 			Route::get('/search', 'HomeController@search')->name('search');
 			Route::get('/paid', 'HomeController@showpaid')->name('showpaid');
-			Route::post('/delete', 'HomeController@book_recylebin')->name('soft.destroy');
+			Route::POST('/delete', 'HomeController@book_recylebin')->name('soft.destroy');
 			Route::get('/trashed', 'Trashed_bookingsController@index')->name('trashed');
 			Route::get('/trashed/search', 'Trashed_bookingsController@search')->name('search.trashed');
 			Route::resource('manage_users', 'Manage_usersController');

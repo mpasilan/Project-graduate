@@ -159,6 +159,18 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
     <script src="{{ asset('site/js/owl.carousel.min.js') }}"></script>
     <script src="{{ asset('site/js/main.js') }}"></script>
     <script src="{{ asset('site/js/custom.js') }}"></script>
+    <script>
+        $('#Terms').on('show.bs.modal',function(event){
+            var button = $(event.relatedTarget)
+              var booking = button.data('book')
+              var modal = $(this)
+              modal.find('.modal-footer #booking_id').val(booking);
+            var $submit = $("#continue").hide(),
+            $cbs = $('input[name="prog"]').click(function() {
+                $submit.toggle( $cbs.is(":checked") );
+            });
+    });
+    </script>
 </body>
 
 </html>
