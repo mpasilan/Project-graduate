@@ -1,8 +1,11 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
+
+use App\Mail\ContactUsMail;
+use Illuminate\Support\Facades\Mail;
 
 class ContactController extends Controller
 {
@@ -21,9 +24,27 @@ class ContactController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function send(Request $request)
     {
-        //
+        
+        $this->validate($request, [
+            'name' => ['required', 'string', 'min:3', 'max:50'],
+            'email' => ['required', 'email', 'max:50'],
+            'contact' => ['required', 'string', 'min:4', 'max:50'],
+            'message' => ['required', 'string', 'min:8'],
+            
+        ]);
+
+            $data = array(
+                        'name' => $request['name'],
+                        'email' => $request['email'],
+                        'contact' => $request['contact'],
+                        'message' => $request['message'],
+
+                    );
+
+        Mail::to('gamorotcottages@email.com')->send(new ContactUsMail($data));
+        return redirect()->action('ContactController@index')->with('Success','Message sent sucessfully!');
     }
 
     /**

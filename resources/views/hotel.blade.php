@@ -7,9 +7,69 @@
             <div class="single-slider-item set-bg" data-setbg="{{ asset('site/img/slider-1.jpg') }}">
                 <div class="container">
                     <div class="row">
-                         <div class="col-lg-6">
-                        <div class="check-form" style="background: white;">
-                            <h2>Check Availability</h2>
+                         <div class="col-lg-12">
+                            <h1>We hope you’ll enjoy <br />your stay with us.</h1>
+                        </div>
+                         
+                    </div>
+       
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Hero Slider End -->
+
+    <!-- Room Availability Section Begin -->
+    <section class="room-availability spad">
+        <div class="container">
+            <div class="room-check">
+                <div class="row">
+                   <div class="col-lg-6">
+                        <div class="room-item">
+                            <div class="room-pic-slider room-pic-item owl-carousel">
+                                <div class="room-pic">
+                                    <img src="{{ asset('site/img/room/rooms-1.jpg')}}" alt="">
+                                </div>
+                                <div class="room-pic">
+                                    <img src="{{ asset('site/img/room-slider/room-2.jpg')}}" alt="">
+                                </div>
+                                <div class="room-pic">
+                                    <img src="{{ asset('site/img/room-slider/room-3.jpg')}}" alt="">
+                                </div>
+                            </div>
+                            <div class="room-text">
+                                <div class="room-title">
+                                    <h2>Junior Room</h2>
+                                    <div class="room-price">
+                                        <span>From</span>
+                                        <h2>₱1,600</h2>
+                                    </div>
+                                </div>
+                                <div class="room-features">
+                                    <div class="room-info">
+                                        <i class="flaticon-019-television"></i>
+                                        <span>Smart TV</span>
+                                    </div>
+                                    <div class="room-info">
+                                        <i class="flaticon-029-wifi"></i>
+                                        <span>High Speed Wi-Fi</span>
+                                    </div>
+                                    <div class="room-info">
+                                        <i class="flaticon-003-air-conditioner"></i>
+                                        <span>AC</span>
+                                    </div>
+                                    <div class="room-info">
+                                        <i class="flaticon-036-parking"></i>
+                                        <span>Parking</span>
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="check-form" id="book" style="background: white;">
+                            <h2>Book now!</h2>
                             <form method="post" action="{{ route('hotel.get') }}" autocomplete="off">
                                 @csrf
                                 <div class="datepicker">
@@ -31,20 +91,6 @@
                             </form>
                         </div>
                     </div>
-                    </div>
-       
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Hero Slider End -->
-
-    <!-- Room Availability Section Begin -->
-    <section class="room-availability spad">
-        <div class="container">
-            <div class="room-check">
-                <div class="row">
-                   
                 </div>
             </div>
             <div class="about-room">
@@ -56,16 +102,10 @@
                 <div class="about-para">
                     <div class="row">
                         <div class="col-lg-6">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus libero mauris,
-                                bibendum eget sapien ac, ultrices rhoncus ipsum. Donec nec sapien in urna fermentum
-                                ornare. Morbi vel ultrices leo. Sed eu turpis eu arcu vehicula fringilla ut vitae
-                                orci. Suspendisse maximus malesuada</p>
+                            <p></p>
                         </div>
                         <div class="col-lg-6">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi at vulputate est.
-                                Donec tempor felis at nibh eleifend malesuada. Nullam suscipit lobortis aliquam.
-                                Phasellus lobortis ante lorem, vitae scelerisque lacus tempus sed. Phasellus rutrum
-                                magna </p>
+                            <p></p>
                         </div>
                     </div>
                 </div>
@@ -100,9 +140,7 @@
                                         <i class="fa fa-star"></i>
                                     </div>
                                     <h4>Loved It</h4>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiselit. Vivamus libero mauris,
-                                        bibendum eget sapien ac, ultrices rhoncus ipsum. Donec nec sapien in urna
-                                        fermentum ornare.</p>
+                                    <p></p>
                                 </div>
                             </div>
                             <div class="tab-pane fade" id="testimonial-2" role="tabpanel">
@@ -116,9 +154,7 @@
                                         <i class="fa fa-star"></i>
                                     </div>
                                     <h4>Loved It2</h4>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiselit. Vivamus libero mauris,
-                                        bibendum eget sapien ac, ultrices rhoncus ipsum. Donec nec sapien in urna
-                                        fermentum ornare.</p>
+                                    <p></p>
                                 </div>
                             </div>
                             <div class="tab-pane fade" id="testimonial-3" role="tabpanel">
@@ -132,9 +168,7 @@
                                         <i class="fa fa-star"></i>
                                     </div>
                                     <h4>Loved It3</h4>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiselit. Vivamus libero mauris,
-                                        bibendum eget sapien ac, ultrices rhoncus ipsum. Donec nec sapien in urna
-                                        fermentum ornare.</p>
+                                    <p></p>
                                 </div>
                             </div>
                         </div>

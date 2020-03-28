@@ -90,7 +90,7 @@ class HotelController extends Controller
         $in = $date['in'];
         $out = $date['out'];
             $request->session()->put('category_id',$request->input());
-            $category_id = $request->session()->get('category_id');
+            $cat_id = $request->session()->get('category_id');
         // $category_id = $request['category_id'];
         // $room = Rooms::whereDoesntHave('booking', function ($query) use ($in,$out){
         //     $query->where('bookings.check_in_date', '<', $out)->where('bookings.check_out_date', '>', $in);}
@@ -111,8 +111,8 @@ class HotelController extends Controller
         
         //validate guest details
          $this->validate($request, [
-            'fname' => ['required', 'string', 'min:4', 'max:255'],
-            'lname' => ['required', 'string', 'min:4', 'max:255'],
+            'fname' => ['required', 'string', 'min:3', 'max:255'],
+            'lname' => ['required', 'string', 'min:3', 'max:255'],
             'email' => ['required', 'email', 'max:255'],
             'birthdate' => ['required', 'date', 'before:18 years ago'],
             'address' => ['required', 'string', 'max:255'],

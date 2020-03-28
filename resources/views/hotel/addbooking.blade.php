@@ -2,16 +2,12 @@
 
 @section('content')
 	<!-- Hero Slider Begin -->
-    <div class="hero-slider">
-        <div class="slider-item">
-            <div class="single-slider-item set-bg" data-setbg="{{ asset('site/img/slider-1.jpg') }}">
-                <div class="container">
-                   
-                    
-                    <div class="row">
-                        
+    <section class="room-availability spad">
+        <div class="container" style="margin-top:20px">
+            <div class="room-check">
+                <div class="row">              
                             <div class="col-6">
-                                 <div class="check-form" style="background: white; height: 45rem;">
+                                 <div class="check-form" style="background: white; height: 40rem;">
                                     <h2>Guest details</h2>
                                 <h2></h2>
                                 <h4></h4>
@@ -74,7 +70,7 @@
 
 
 
-                                                     <div class="col-md-6 ">
+                                                     <div class="col-md-12 ">
                                                         <input id="address" placeholder="{{ __('Address') }}" type="text" class="form-control @error('address') is-invalid @enderror" name="address" value="{{ old('address') }}"  autocomplete="address" autofocus required>
  
                                                         @error('address')
@@ -84,7 +80,7 @@
                                                         @enderror
                                                     </div>
 
-                                                    <div class="col-md-6 ">
+                                                    <div class="col-md-12 ">
                                                         <input id="contact" placeholder="{{ __('Contct No.') }}" type="text" class="form-control @error('contact') is-invalid @enderror" name="contact" value="{{ old('contact') }}"  autocomplete="contact" autofocus>
  
                                                         @error('contact')
@@ -213,11 +209,10 @@
                                         </div>
                                 </div>
                             </div>
-                           
                     </div>
+                  </div>
                 </div>
-            </div>
-        </div>
-    </div>
+              </section>
+                           
     <!-- Hero Slider End --> 
 @endsection

@@ -278,10 +278,10 @@ ol {
 
 .header-section {
 	background: #353535;
-	padding: 38px 0;
 	position: absolute;
 	left: 0;
 	width: 100%;
+	padding-top: 10px;
 }
 
 .header-section.other-page {
@@ -339,15 +339,20 @@ ol {
 .inner-header .logo a {
 	display: block;
 }
+.inner-header .logo a img{
+	height: 78px;
+}
 
 .inner-header .main-menu {
 	float: left;
 	margin-right: 25px;
 }
 
+
 .inner-header .main-menu ul li {
 	list-style: none;
 	display: inline-block;
+	padding-top: 29px;
 	margin-right: 40px;
 	position: relative;
 }
@@ -408,12 +413,13 @@ ol {
 
 .inner-header .top-info img {
 	position: absolute;
-	left: 0;
-	top: 2px;
+	left: 15px;
+	top: 21px;
 }
 
 .inner-header .top-info span {
 	font-size: 14px;
+	padding-top: 29px;
 	font-family: "Open Sans", sans-serif;
 	font-weight: 400;
 	color: #ffffff;
@@ -432,14 +438,15 @@ ol {
 -----------------------*/
 
 .slider-item .single-slider-item {
-	height: 55rem;
+	height: 35rem;
 	padding-top: 8rem;
 }
 
 .slider-item .single-slider-item h1 {
-	font-size: 96px;
+	font-size: 75px;
 	color: #ffffff;
 	line-height: 96px;
+
 }
 
 .slider-nav {

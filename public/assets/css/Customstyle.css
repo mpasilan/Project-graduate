@@ -13,3 +13,9 @@
 	font-weight: bolder;
 	font-style: italic;
 }
+.view {
+	background: transparent;
+	border: none;
+	font-size: 15px;
+
+}

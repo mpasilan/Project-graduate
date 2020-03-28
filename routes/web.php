@@ -14,11 +14,13 @@
 Route::get('/', function () {
     return redirect('hotel');
 });
-	Route::resource('hotel', 'HotelController');
-	Route::resource('contact', 'ContactController');
-	Route::post('hotel/rooms','HotelController@getdates')->name('hotel.get');
-	Route::post('hotel/payment', 'HotelController@paymentdetails')->name('hotel.payment');
 	
+	Route::resource('contact', 'ContactController');
+	Route::post('contact/send','ContactController@send')->name('send');
+	Route::resource('hotel', 'HotelController');
+        Route::post('hotel/rooms','HotelController@getdates')->name('hotel.get');
+		Route::post('hotel/payment', 'HotelController@paymentdetails')->name('hotel.payment');
+
 
 Auth::routes();
 Route::group(['prefix' => 'admin','middleware' => ['adminrole']], function(){
@@ -27,8 +29,11 @@ Route::group(['prefix' => 'admin','middleware' => ['adminrole']], function(){
 			Route::get('/search', 'HomeController@search')->name('search');
 			Route::get('/paid', 'HomeController@showpaid')->name('showpaid');
 			Route::POST('/delete', 'HomeController@book_recylebin')->name('soft.destroy');
+			Route::POST('confirm', 'HomeController@confirm')->name('conf.bo');
+			Route::POST('confirm/payment', 'HomeController@confirm_payment')->name('conf.pa');
 			Route::get('/trashed', 'Trashed_bookingsController@index')->name('trashed');
 			Route::get('/trashed/search', 'Trashed_bookingsController@search')->name('search.trashed');
+			Route::POST('/trashed/res', 'Trashed_bookingsController@booking_recylebin')->name('restore.bo');
 			Route::resource('manage_users', 'Manage_usersController');
 			Route::POST('/saving-credentials','HomeController@updateCreds');
 			Route::get('/ticket/{ticketId}','HomeController@ticket');

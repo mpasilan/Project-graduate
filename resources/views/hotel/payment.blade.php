@@ -2,36 +2,62 @@
 
 @section('content')
 	<!-- Hero Slider Begin -->
-    <div class="hero-slider">
-        <div class="slider-item">
-            <div class="single-slider-item set-bg" data-setbg="{{ asset('site/img/slider-1.jpg') }}">
-                <div class="container">
-                   
-                    
+    <section class="room-availability spad">
+        <div class="container" style="margin-top:20px">
+            <div class="room-check">
                     <div class="row">
                         
                             <div class="col-6">
-                                 <div class="check-form" style="background: white; height: 45rem;">
+                                 <div class="check-form" style="background: white; height: 45em;">
                                     <h2>Payment details</h2>
-                                            
-                                            Guest Name: {{ $fname }} {{$lname}}<br>
-                                            Booking ID: H{{$created}}Z{{$id}}<br>
-                                            {{$nights}}
-                                            @if ($nights > 1)
-                                                Nights <br>
-                                                @else
-                                                    Night <br>
-                                            @endif
-                                            Room: {{$category}} room <br>
-                                            From: {{$from}}<br>
-                                            To: {{$to}}<br>
-                                            Total: {{$total}}<br>
-                                            Booking Fee: {{$bookingFee}} <br>
-                                            remaining balance to be paid at the hotel: {{$balance}}
+                                            <table class="table table-borderless">
+                                                <tr>
+                                                    <th>Guest Name:</th>
+                                                    <td>{{ $fname }} {{$lname}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <th>Booking ID:</th>
+                                                    <td>H{{$created}}Z{{$id}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <th>No. of nights</th>
+                                                    <td>{{$nights}}
+                                                        @if ($nights > 1)
+                                                            Nights <br>
+                                                            @else
+                                                                Night <br>
+                                                        @endif</td>
+                                                </tr>
+                                                <tr>
+                                                    <th> Room:</th>
+                                                    <td>{{$category}} room</td>
+                                                </tr>
+                                                <tr>
+                                                    <th> From:</th>
+                                                    <td>{{$from}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <th>To:</th>
+                                                    <td>{{$to}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <th>Total:</th>
+                                                    <td>{{$total}}</td>
+                                                </t>
+                                                <tr>
+                                                    <th>Booking Fee:</th>
+                                                    <td>{{$bookingFee}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <th>remaining balance to<br> be paid at the hotel:</th>
+                                                    <td>{{$balance}}</td>
+                                                </tr>
+                                            </table>
+                                             
 
-                                            
+                                            <hr>
                                         <div class="card-body">
-
+                                                
                                                <div class="form-group row"> 
                                                     
                                                 <div class="form-group row mb-0">
@@ -41,17 +67,52 @@
                                                 </div>
                                             </div>
 
-                                            <hr>
+                                            
 
                                         </div>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                 <div class="check-form" style="background: #b0afae;">
+                                    <h2 style="font-style: italic;:">Payment to remittance example,</h2>
+                                            <table class="table table-borderless">
+                                                <tr>
+                                                    <th>Sender's name :</th>
+                                                    <td style="font-style: italic;">("your name")</td>
+                                                </tr>
+                                                <tr>
+                                                    <th>Receiver's name/account name/Payment to:</th>
+                                                    <td >Gamorot Cottages Resort-Camiguin</td>
+                                                </tr>
+                                                <tr>
+                                                    
+                                                    <th>Control no./Account no./Reference no :</th>
+                                                    <td style="font-style: italic;">("Booking ID")</td>
+                                                </tr>
+                                                <tr>
+                                                    <th>Amount :</th>
+                                                    <td style="font-style: italic;">("booking fee")</td>
+                                                </tr>
+                                                
+                                            </table>
+                                            
+                                        <div class="card-body">
+
+                                            <hr>
+                                                <p>Settle your booking fee through the remittances shown below</p><br>
+                                                <div class="room-pic-slider room-pic-item owl-carousel">
+                                                    <div class="room-pic">
+                                                        <img src="{{ asset('site/img/modeofpayment.png')}}" alt="">
+                                                    </div>
+                                                </div>
                                 </div>
                             </div>
                            
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
+        </section>
+
     <div class="modal fade" id="Terms" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
       <div class="modal-content">
@@ -105,7 +166,7 @@
 
         </div>
         <div class="modal-footer">
-            <form method="POST" action="{{ route('hotel.payment') }}">
+            <form method="POST" action="{{ route('hotel.payment') }}" target="_blank">
                 @csrf
              <input type="hidden" name="booking" id="booking_id" value="">
             <button class="btn btn-info" type="submit" id="continue">Continue</button>

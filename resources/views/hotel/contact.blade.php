@@ -3,25 +3,18 @@
 @section('content')
 
     <!-- Hero Section Begin -->
-    <section class="hero-section set-bg" data-setbg="{{ asset('site/img/contact-bg.jpg') }}">
-        <div class="hero-text">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <h1>Contact</h1>
-                    </div>
-                </div>
-                <div class="page-nav">
-                    <a href="./news.html" class="left-nav"><i class="lnr lnr-arrow-left"></i> News</a>
-                </div>
-            </div>
-        </div>
-    </section>
+
     <!-- Hero Section End -->
 
     <!-- Contact Section Begin -->
     <section class="contact-section spad">
         <div class="container">
+                @if($message = Session::get('Success'))
+            <div class="alert alert-success alert-block">
+              <button type="button" class="close" data-dismiss="alert">x</button>
+                  <strong>{{ $message }}</strong>
+            </div>
+          @endif
             <div class="row">
                 <div class="col-lg-6">
                     <div class="contact-left">
@@ -30,7 +23,7 @@
                             <ul>
                                 <li><img src="{{ asset('site/img/placeholder-copy.png') }}" alt=""> <span>Camiguin Island, Philippines</span></li>
                                 <li><img src="{{ asset('site/img/phone-copy.png') }}" alt=""> <span>+63 (9)179342526</span></li>
-                                <li><img src="{{ asset('site/img/envelop.png') }}" alt=""> <span>hotel@email.com</span></li>
+                                <li><img src="{{ asset('site/img/envelop.png') }}" alt=""> <span>gamorotcottages@email.com</span></li>
                                 <li><img src="{{ asset('site/img/clock-copy.png') }}" alt=""> <span>Everyday: 06:00 -22:00</span></li>
                             </ul>
                         </div>
@@ -48,24 +41,36 @@
                 <div class="col-lg-6">
                     <div class="contact-form">
                         <h5>Write us ...</h5>
-                        <form action="#">
+                        @if(count($errors)>0)
+                            <div class="alert alert-danger">
+                                <button type="button" class="close" data-dismiss="alert">x</button>
+                                <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li>{{$error}}</li>
+                                @endforeach
+                                </ul>
+                            </div>
+                        @endif
+                        <form action="{{ route('send') }}" method="post" autocomplete="off">
+                            @method('POST')
+                            @csrf
                             <div class="row">
                                 <div class="col-lg-12">
                                     <p>From</p>
                                     <div class="input-group">
-                                        <input type="text" placeholder="Full Name">
+                                        <input name="name" type="text" placeholder="Full Name">
                                         <img src="img/edit.png" alt="">
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="input-group">
-                                        <input type="email" placeholder="Email">
+                                        <input name="email" type="email" placeholder="Email">
                                         <img src="img/envelop-copy.png" alt="">
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="input-group phone-num">
-                                        <input type="text" placeholder="Phone">
+                                        <input name="contact" type="text" placeholder="Phone">
                                         <img src="img/phone-copy.png" alt="">
                                     </div>
                                 </div>
@@ -73,7 +78,7 @@
                                     <div class="message">
                                         <p>Message</p>
                                         <div class="textarea">
-                                            <textarea placeholder="Hi ..."></textarea>
+                                            <textarea name="message" placeholder="Hi ..."></textarea>
                                             <img src="img/speech-copy.png" alt="">
                                         </div>
                                     </div>

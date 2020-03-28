@@ -8,6 +8,7 @@ use App\Guest;
 use App\Bookings;
 use App\Rooms;
 use App\Room_category;
+use Carbon\Carbon;
 
 use Auth;
 
@@ -58,6 +59,21 @@ class Trashed_bookingsController extends Controller
         	}
         
          return view('admin/trashed_bookings')->with($book);
+    }
+
+
+    public function booking_recylebin(Request $request)
+    {
+        $id = $request['booking'];
+        $booking = Bookings::onlyTrashed()->findOrFail($id);
+        if($booking->created_at < Carbon::parse('-24 hours')){
+            $booking->confirmed_by = 'pending';
+            $booking->created_at = $booking->updated_at;
+            $booking->save();
+        }
+        $booking->restore();
+
+        return redirect()->action('Trashed_bookingsController@index')->with('Success','Booking restored sucessfully!');
     }
 
 }

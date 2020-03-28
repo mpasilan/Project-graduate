@@ -1,11 +1,22 @@
-<!DOCTYPE html>
+	<!DOCTYPE html>
 <html>
 <head>
 	<title></title>
 	<link rel="stylesheet" href="{{ asset('site/css/bootstrap.min.css') }}" type="text/css">
 </head>
 <body>
-	<div class="p-3 mb-2 bg-dark text-white "><p class="text-sm-right">gamorotcottages.webronins.com</p></div>
+	<div class="p-3 mb-2 text-white " style="background: #353535"><img src="{{ asset('site/img/loogo.png') }}" alt="" style="height: 75px;display: inline;"><span style="display: inline;float: right;padding-top:60px;">http://gamorotcottages.webronins.com/</span></div>
+	<p style="color: red;font-style: bold;">Notice:</p>
+	<p style="color: red;font-style: italic; font-size: 12px;"> If failed to settle Booking fee (20% of total booking amount) within 24 hours,
+                    booking reservation will automatically be cancelled. <br>
+                    "there will be no refund on booking fee after booking cancellation" <br>
+                    *Please arrive at the hotel 2hrs before the check in time or call the hotel if you can't make it on time. <br>
+                    *Failed to arrive at the hotel 2hrs before check in time without notice will be mark as forfeit/cancelled. <br>
+                    --Present the following upon check in:<br>
+                    1. Valid id. <br>
+                    2. Hard copy/picture of the reservation. <br>
+                    3. Hard copy/picture of the booking fee receipt from the remittance.
+                 </p>
 	<table class="table table-borderless">
 		@foreach ($show as $s)
 	<tr>
@@ -14,7 +25,7 @@
 		<td></td>
 	</tr>
 	<tr>
-		<th>Guest:</th>
+		<th>Guest Name:</th>
 		<td>{{ $s->guest->firstname }} {{ $s->guest->lastname }}</td>	
 	</tr>
 	<tr>
@@ -59,20 +70,16 @@
 	@endforeach
 </table>
 	<div class="p-1 mb-0 bg-dark text-white "></div>
-	<p style="font-style: italic;">Remittance payment dtails</p><br><br>
+	<p style="font-style: italic;">Remittance payment dtails</p>
 	<p style="font-weight: bold;font-style: italic;">Receiver/Account name/Payment to:<u> Gamorot Cottages Resort-Camiguin</u></p>
-	<p style="font-weight: bold;font-style: italic;">Control no./Account no./Reference no :<u>(Booking ID)</u></p> <br>
-	<p style="color: red;font-style: bold;">Notice:</p>
-	<p style="color: red;font-style: italic; font-size: 12px;"> If failed to settle Booking fee (20% of total booking amount) within 24 hours,
-                    booking reservation will automatically be cancelled. <br>
-                    "there will be no refund on booking fee after booking cancellation" <br>
-                    *Please arrive at the hotel 2hrs before the check in time or call the hotel if you can't make it on time. <br>
-                    *Failed to arrive at the hotel 2hrs before check in time without notice will be mark as forfeit/cancelled. <br>
-                    --Present the following upon check in:<br>
-                    1. Valid id. <br>
-                    2. Hard copy/picture of the reservation. <br>
-                    3. Hard copy/picture of the booking fee receipt from the remittance.
-                 </p>
+	<p style="font-weight: bold;font-style: italic;">Control no./Account no./Reference no :<u>(Booking ID)</u></p>
+	Settle your payment through any of the remittance listed below:<br>			
+			<ul>
+				<li style="display: inline;">*Mlhuiller </li>
+				<li style="display: inline;"> *Cebuana Lhuiller </li>
+				<li style="display: inline;"> *Palawan express </li>
+				<li style="display: inline;"> *LBC</li>
+			</ul>
 </body>
 </html>
 

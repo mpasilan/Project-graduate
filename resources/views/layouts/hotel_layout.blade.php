@@ -39,7 +39,7 @@
         <div class="container-fluid">
             <div class="inner-header">
                 <div class="logo">
-                    <a href="{{ route('hotel.index') }}"><img src="{{ asset('site/img/logo.png') }}" alt=""></a>
+                    <a href="{{ route('hotel.index') }}"><img src="{{ asset('site/img/loogo.png') }}" alt=""></a>
                 </div>
                 <div class="container">
                     <div class="row">
@@ -47,16 +47,7 @@
                             <nav class="main-menu mobile-menu">
                                 <ul>
                                     <li><a href="{{ route('hotel.index') }}">Home</a></li>
-                                    <li><a href="./rooms.html">Rooms</a></li>
-                                    <li><a href="#">Facilities</a>
-                                        <ul class="drop-menu">
-                                            <li><a href="#">Junior Suit</a></li>
-                                            <li><a href="#">Double Room</a></li>
-                                            <li><a href="#">Senior Suit</a></li>
-                                            <li><a href="#">Single Room</a></li>
-                                        </ul>
-                                    </li>
-                                    <li><a href="./news.html">News</a></li>
+                                    <li><a href="{{ route('hotel.index') }}#book">Book now</a></li>
                                     <li><a href="{{ route('contact.index') }}">Contact</a></li>
                                 </ul>
                             </nav>
@@ -93,10 +84,10 @@
     <div class="footer-room-pic">
         <div class="container-fluid">
             <div class="row">
-                <img src="img/room-footer-pic/room-1.jpg" alt="">
-                <img src="img/room-footer-pic/room-2.jpg" alt="">
-                <img src="img/room-footer-pic/room-3.jpg" alt="">
-                <img src="img/room-footer-pic/room-4.jpg" alt="">
+                <img src="{{asset('/site/img/room-footer-pic/room-1.jpg')}}" alt="">
+                <img src="{{asset('/site/img/room-footer-pic/room-2.jpg')}}" alt="">
+                <img src="{{asset('/site/img/room-footer-pic/room-3.jpg')}}" alt="">
+                <img src="{{asset('/site/img/room-footer-pic/room-4.jpg')}}" alt="">
             </div>
         </div>
     </div>
@@ -169,8 +160,13 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
             $cbs = $('input[name="prog"]').click(function() {
                 $submit.toggle( $cbs.is(":checked") );
             });
-    });
-    </script>
+         });
+
+             $('#continue').click(function() {
+                $('#Terms').modal('hide');
+               
+                });
+       </script>
 </body>
 
 </html>
