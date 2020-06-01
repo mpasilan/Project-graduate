@@ -123,7 +123,6 @@
 
 
                       data-toggle="modal" data-target="#ViewTrashed">View</button>
-                      <button class="btn btn-danger btn-sm" data-uname=""  data-uid=""  data-toggle="modal" data-target="#DeleteBookingModal">Delete</button>
                     </td>
                 </tr>
                   <?php $count++; ?>
